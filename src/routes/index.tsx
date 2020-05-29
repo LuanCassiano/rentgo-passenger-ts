@@ -1,5 +1,6 @@
 import React, { ReactElement } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import LoginScreen from '../screens/Login';
 import HomeScreen from '../screens/Home';
@@ -9,6 +10,15 @@ interface INavigationProps {
 }
 
 const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
+function HomeNavigator(): ReactElement {
+    return (
+        <Drawer.Navigator>
+            <Drawer.Screen name="HomePage" component={HomeScreen} />
+        </Drawer.Navigator>
+    );
+}
 
 const getInitialRoute = (signed: boolean): string => {
     if (signed) {
@@ -28,7 +38,7 @@ export default function RootNavigator({
                 initialRouteName={getInitialRoute(signed)}
             >
                 <Stack.Screen name="Login" component={LoginScreen} />
-                <Stack.Screen name="Home" component={HomeScreen} />
+                <Stack.Screen name="Home" component={HomeNavigator} />
             </Stack.Navigator>
         );
     }

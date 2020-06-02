@@ -4,7 +4,7 @@ export const Container = styled.View`
     flex: 1;
 `;
 
-export const Content = styled.View`
+export const Section = styled.View`
     padding: 20px;
 `;
 
@@ -72,4 +72,29 @@ export const CardParagraph = styled.Text`
     font-family: 'Nunito-Regular';
     color: #fff9c4;
     text-align: center;
+`;
+
+export const ListFavoriteContainer = styled.TouchableOpacity`
+    padding: 20px;
+    background-color: #1c2331;
+    margin: 10px 10px 0px 0px;
+    border-radius: 10px;
+`;
+
+export const ListFavoriteContent = styled.View`
+    flex-direction: row;
+    align-items: center;
+`;
+
+export const ListFavoriteMedia = styled.Image`
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    border-radius: 20px;
+`;
+
+export const ListFavoriteText = styled.Text`
+    font-size: 16px;
+    font-family: 'Nunito-Bold';
+    color: #fff9c4;
 `;

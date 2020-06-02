@@ -1,0 +1,4 @@
+export enum FavoriteListTypes {
+    GET_FAVORITE_LIST_REQUEST = 'favoriteList/GET_FAVORITE_LIST_REQUEST',
+    GET_FAVORITE_LIST_SUCCESS = 'favoriteList/GET_FAVORITE_LIST_SUCCESS',
+}

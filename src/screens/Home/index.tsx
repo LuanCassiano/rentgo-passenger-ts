@@ -1,12 +1,12 @@
-/* eslint-disable camelcase */
 /* eslint-disable no-underscore-dangle */
 import React, { ReactElement, useEffect, useState } from 'react';
+import { FlatList } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 import {
     Container,
-    Content,
+    Section,
     FAB,
     FABIcon,
     SectionActions,
@@ -16,6 +16,10 @@ import {
     CardParagraph,
     CardTitle,
     Title,
+    ListFavoriteContainer,
+    ListFavoriteContent,
+    ListFavoriteMedia,
+    ListFavoriteText,
 } from './styles';
 
 import Header from '../../components/Header';
@@ -26,6 +30,7 @@ import { RootState } from '../../store/module/rootReducer';
 
 import * as DriverActions from '../../store/module/Driver/actions';
 import * as PassengerTripsActions from '../../store/module/PassengerTrips/actions';
+import * as FavoriteListActions from '../../store/module/FavoriteList/actions';
 
 import IconPlus from '../../assets/icons/plus.png';
 import IconTripScheduled from '../../assets/icons/schedule-trip.png';
@@ -39,6 +44,9 @@ export default function Home(): ReactElement {
     );
     const finishedTripsTotal = useSelector(
         (state: RootState) => state.passengerTrip.totalFinished,
+    );
+    const favoriteListInfo = useSelector(
+        (state: RootState) => state.favoriteList,
     );
 
     const dispatch = useDispatch();
@@ -65,19 +73,36 @@ export default function Home(): ReactElement {
         );
     };
 
+    const getFavoriteList = (): void => {
+        dispatch(FavoriteListActions.getFavoriteListRequest(1, 1));
+    };
+
+    const _renderItem = (item: any): ReactElement => {
+        return (
+            <ListFavoriteContainer>
+                <ListFavoriteContent>
+                    <ListFavoriteMedia source={{ uri: item.profile_image }} />
+                    <ListFavoriteText>{item.fullname}</ListFavoriteText>
+                </ListFavoriteContent>
+            </ListFavoriteContainer>
+        );
+    };
+
     useEffect(() => {
         dispatch(DriverActions.getDriversRequest());
 
         getTripsScheduled();
 
         getTripsFinished();
+
+        getFavoriteList();
     }, [dispatch]);
 
     return (
         <Container>
             <Header title="RentGo" onDrawer={toggleDrawer} />
 
-            <Content>
+            <Section>
                 <Title>Minhas informações</Title>
 
                 <Row>
@@ -93,7 +118,19 @@ export default function Home(): ReactElement {
                         <CardParagraph>Viagens realizadas</CardParagraph>
                     </CardContainer>
                 </Row>
-            </Content>
+            </Section>
+
+            <Section>
+                <Title>Meus motoristas favoritos</Title>
+
+                <FlatList
+                    keyExtractor={(item): string => String(item.id)}
+                    data={favoriteListInfo.data}
+                    renderItem={({ item }) => _renderItem(item)}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                />
+            </Section>
             <SectionActions>
                 <FAB>
                     <FABIcon source={IconPlus} />

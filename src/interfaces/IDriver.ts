@@ -1,8 +1,6 @@
-/* eslint-disable camelcase */
-import ITrip from './ITrip';
-
 export default interface IDriver {
-    id: number;
+    id?: number;
+    user_id?: number;
     fullname: string;
     mobile_phone: string;
     profile_image: string;
@@ -12,5 +10,4 @@ export default interface IDriver {
     value_per_kilometer: number;
     alcoholic_beverages: boolean;
     animals: boolean;
-    trip?: ITrip[];
 }

@@ -12,7 +12,6 @@ export const Title = styled.Text`
     font-size: 20px;
     font-family: 'Nunito-SemiBold';
     color: #1c2331;
-    text-transform: uppercase;
 `;
 
 export const SectionActions = styled.View`
@@ -33,8 +32,8 @@ export const FAB = styled.TouchableOpacity`
 `;
 
 export const FABIcon = styled.Image`
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
 `;
 
 export const Row = styled.View`
@@ -72,4 +71,49 @@ export const CardParagraph = styled.Text`
     font-family: 'Nunito-Regular';
     color: #fff9c4;
     text-align: center;
+`;
+
+export const CardTravelContainer = styled.View`
+    margin-top: 20px;
+`;
+
+export const CardTravel = styled.TouchableOpacity`
+    width: 300px;
+    padding: 20px;
+    background-color: #1c2331;
+    margin-right: 10px;
+    elevation: 2;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 2px;
+`;
+
+export const CardTravelLabel = styled.Text`
+    font-size: 10px;
+    font-family: 'Nunito-Regular';
+    color: #fff9c4;
+`;
+
+export const CardTravelTitle = styled.Text`
+    font-size: 16px;
+    font-family: 'Ninuto-SemiBold';
+    color: #fff9c4;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+`;
+
+export const JustifiedItemsCenter = styled.View`
+    justify-content: center;
+`;
+
+export const ButtonSeeAll = styled.TouchableOpacity`
+    align-items: center;
+    justify-content: center;
+`;
+
+export const TextButtonSeeAll = styled.Text`
+    font-size: 14px;
+    font-family: 'Nunito-Regular';
+    color: #1c2331;
 `;

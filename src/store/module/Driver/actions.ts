@@ -8,9 +8,27 @@ export function getDriversRequest(): IAction<unknown, string> {
     };
 }
 
-export function getDriversSuccess(data: IDriver): IAction<unknown, string> {
+export function getDriversSuccess(data: IDriver[]): IAction<unknown, string> {
     return {
         type: DriverTypes.GET_DRIVERS_SUCCESS,
+        payload: { data },
+    };
+}
+
+export function getDriverFavoritesRequest(
+    passengerId: number,
+): IAction<unknown, string> {
+    return {
+        type: DriverTypes.GET_DRIVERS_FAVORITES_REQUEST,
+        payload: { passengerId },
+    };
+}
+
+export function getDriverFavoritesSuccess(
+    data: IDriver[],
+): IAction<unknown, string> {
+    return {
+        type: DriverTypes.GET_DRIVERS_FAVORITES_SUCCESS,
         payload: { data },
     };
 }

@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable indent */
 import { produce } from 'immer';
@@ -11,6 +10,7 @@ const INITIAL_STATE: IPassengerTripReducer = {
     page: 0,
     totalFinished: '',
     totalScheduled: '',
+    travelFinished: [],
 };
 
 export default function passengerTrip(
@@ -40,6 +40,7 @@ export default function passengerTrip(
                 draft.loading = false;
                 draft.page = action.payload.page;
                 draft.totalFinished = action.payload.data.total;
+                draft.travelFinished = action.payload.data.data;
                 break;
             }
 

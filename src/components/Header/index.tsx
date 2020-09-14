@@ -6,7 +6,6 @@ import {
     HeaderActionButtonIcon,
     Content,
     Title,
-    ViewCenter,
 } from './styles';
 
 import IconMenu from '../../assets/icons/menu.png';
@@ -26,9 +25,7 @@ export default function Header({
                 <HeaderActionButton onPress={onDrawer}>
                     <HeaderActionButtonIcon source={IconMenu} />
                 </HeaderActionButton>
-                <ViewCenter>
-                    <Title>{title}</Title>
-                </ViewCenter>
+                <Title>{title}</Title>
             </Content>
         </Container>
     );

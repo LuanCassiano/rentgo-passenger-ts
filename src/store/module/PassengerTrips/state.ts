@@ -6,4 +6,5 @@ export interface IPassengerTripReducer {
     readonly totalScheduled: string;
     readonly totalFinished: string;
     readonly page: number;
+    readonly travelFinished: IPassengerTrips[];
 }

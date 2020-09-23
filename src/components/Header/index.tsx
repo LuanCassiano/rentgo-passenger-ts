@@ -1,29 +1,44 @@
 import React, { ReactElement } from 'react';
+import { View } from 'react-native';
 
-import {
-    Container,
-    HeaderActionButton,
-    HeaderActionButtonIcon,
-    Content,
-    Title,
-} from './styles';
+import MDIcon from 'react-native-vector-icons/MaterialIcons';
 
-import IconMenu from '../../assets/icons/menu.png';
+import MDCIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-interface IHeaderProps {
-    title: string;
-    onDrawer(): void;
-}
+import { Container, HeaderActionButton, Content, Title } from './styles';
+
+import IHeader from './interfaces/IHeader';
 
 export default function Header({
     title,
-    onDrawer,
-}: IHeaderProps): ReactElement {
+    action,
+    iconName,
+    iconType,
+}: IHeader): ReactElement {
+    console.tron.log('icon name', iconName);
+    console.tron.log('conType', iconType);
+
+    const _renderActionButtonIcon = (
+        type?: string,
+        name?: string,
+    ): ReactElement => {
+        switch (type) {
+            case 'MaterialCommunityIcons':
+                return <MDCIcon name={name} size={30} color="#fff9c4" />;
+
+            case 'MaterialIcons':
+                return <MDIcon name={name} size={30} color="#fff9c4" />;
+
+            default:
+                return <View />;
+        }
+    };
+
     return (
         <Container>
             <Content>
-                <HeaderActionButton onPress={onDrawer}>
-                    <HeaderActionButtonIcon source={IconMenu} />
+                <HeaderActionButton onPress={action}>
+                    {_renderActionButtonIcon(iconType, iconName)}
                 </HeaderActionButton>
                 <Title>{title}</Title>
             </Content>

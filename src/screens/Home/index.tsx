@@ -53,16 +53,19 @@ export default function Home(): ReactElement {
 
     const getTripsScheduled = (): void => {
         dispatch(
-            PassengerTripsActions.getPassengerTripsRequest(page, passenger_id),
+            PassengerTripsActions.getPassengerTripsRequest({
+                page,
+                passenger_id,
+            }),
         );
     };
 
     const getTripsFinished = (): void => {
         dispatch(
-            PassengerTripsActions.getPassengerTripsFinishedRequest(
+            PassengerTripsActions.getPassengerTripsFinishedRequest({
                 page,
                 passenger_id,
-            ),
+            }),
         );
     };
 
@@ -80,7 +83,12 @@ export default function Home(): ReactElement {
 
     return (
         <Styled.Container>
-            <Header title="RentGo" onDrawer={toggleDrawer} />
+            <Header
+                title="RentGo"
+                action={toggleDrawer}
+                iconName="menu"
+                iconType="MaterialCommunityIcons"
+            />
 
             {loading ? (
                 <Loading />

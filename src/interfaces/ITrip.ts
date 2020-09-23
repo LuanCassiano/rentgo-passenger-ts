@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 export default interface ITrip {
     id: string;
     origin: string;

@@ -1,6 +1,6 @@
-export default interface IAction<P, D> {
+import IDriver from 'src/interfaces/IDriver';
+
+export default interface IAction<P = undefined> {
     type: string;
     payload?: P;
-    data?: D;
-    error?: string;
 }

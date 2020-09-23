@@ -36,7 +36,7 @@ export default function driver(
 
             case DriverTypes.GET_DRIVERS_FAVORITES_SUCCESS: {
                 draft.loading = false;
-                draft.listFavorites = action.payload.data.data;
+                draft.listFavorites = action.payload.data;
                 break;
             }
 

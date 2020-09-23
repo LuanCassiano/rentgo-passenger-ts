@@ -7,4 +7,7 @@ export interface IPassengerTripReducer {
     readonly totalFinished: string;
     readonly page: number;
     readonly travelFinished: IPassengerTrips[];
+    readonly travelWaitingDriver: IPassengerTrips[];
+    readonly travelInProgress: IPassengerTrips[];
+    readonly travelCanceled: IPassengerTrips[];
 }

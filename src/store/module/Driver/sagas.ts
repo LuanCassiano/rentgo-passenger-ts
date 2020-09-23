@@ -20,16 +20,13 @@ export function* getDrivers(): unknown {
     }
 }
 
-export function* getFavoriteDrivers({
-    payload: { passengerId },
-}: AnyAction): Generator {
+export function* getFavoriteDrivers({ payload }: AnyAction): Generator {
     try {
         const response = (yield call(api.get, '/api/favoriteDriver', {
             params: {
-                passenger_id: passengerId,
+                passenger_id: payload,
             },
         })) as IApiResponse<IDriver[]>;
-
         yield put(getDriverFavoritesSuccess(response.data.result));
     } catch (error) {
         console.tron.log('error', error.response);

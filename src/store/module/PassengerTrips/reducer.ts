@@ -11,6 +11,9 @@ const INITIAL_STATE: IPassengerTripReducer = {
     totalFinished: '',
     totalScheduled: '',
     travelFinished: [],
+    travelWaitingDriver: [],
+    travelInProgress: [],
+    travelCanceled: [],
 };
 
 export default function passengerTrip(
@@ -27,7 +30,8 @@ export default function passengerTrip(
             case PassengerTripsTypes.GET_PASSENGER_TRIPS_SUCCESS: {
                 draft.loading = false;
                 draft.page = action.payload.page;
-                draft.totalScheduled = action.payload.data.total;
+                draft.totalScheduled = action.payload.total;
+                draft.travelWaitingDriver = action.payload.data;
                 break;
             }
 
@@ -39,8 +43,30 @@ export default function passengerTrip(
             case PassengerTripsTypes.GET_PASSENGER_TRIPS_FINISHED_SUCCESS: {
                 draft.loading = false;
                 draft.page = action.payload.page;
-                draft.totalFinished = action.payload.data.total;
-                draft.travelFinished = action.payload.data.data;
+                draft.totalFinished = action.payload.total;
+                draft.travelFinished = action.payload.data;
+                break;
+            }
+
+            case PassengerTripsTypes.GET_PASSENGER_TRIPS_IN_PROGRESS_REQUEST: {
+                draft.loading = true;
+                break;
+            }
+
+            case PassengerTripsTypes.GET_PASSENGER_TRIPS_IN_PROGRESS_SUCCESS: {
+                draft.loading = false;
+                draft.travelInProgress = action.payload.data;
+                break;
+            }
+
+            case PassengerTripsTypes.GET_PASSENGER_TRIPS_CANCELED_REQUEST: {
+                draft.loading = true;
+                break;
+            }
+
+            case PassengerTripsTypes.GET_PASSENGER_TRIPS_CANCELED_SUCCESS: {
+                draft.loading = false;
+                draft.travelFinished = action.payload.data;
                 break;
             }
 

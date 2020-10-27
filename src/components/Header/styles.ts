@@ -2,8 +2,6 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
     padding: 20px;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
     background-color: #1c2331;
     elevation: 5;
 `;

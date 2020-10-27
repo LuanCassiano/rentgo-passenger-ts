@@ -21,6 +21,7 @@ export function* getPassengerTripsWaitingDriver({
 
         yield put(getPassengerTripsSuccess(response.data.result));
     } catch (error) {
+        console.tron.log('erorr', error.response);
         throw new Error('Erro ao buscar viagens');
     }
 }
